@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Mio Guardaroba - Vetrina Privata</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Intestazione -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <div class="brand">
+                <h1>ARCHIVE <span class="badge-private">CLOSET</span></h1>
+                <p>Selezione privata di capi dal mio guardaroba</p>
+            </div>
+            <a id="ig-header-link" href="#" target="_blank" class="btn-outline">
+                <i class="fa-brands fa-instagram"></i> Contattami in DM
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Barra Filtri -->
+        <section class="filters-bar">
+            <div class="filter-group">
+                <label for="categoryFilter">Categoria:</label>
+                <select id="categoryFilter">
+                    <option value="all">Tutte le categorie</option>
+                    <option value="Felpe">Felpe & Maglieria</option>
+                    <option value="T-Shirt">T-Shirt</option>
+                    <option value="Pantaloni">Pantaloni & Jeans</option>
+                    <option value="Giacche">Giacche</option>
+                    <option value="Scarpe">Scarpe & Accessori</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="sizeFilter">Taglia:</label>
+                <select id="sizeFilter">
+                    <option value="all">Tutte le taglie</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+
+            <div class="filter-group checkbox-group">
+                <input type="checkbox" id="hideSold" checked>
+                <label for="hideSold">Nascondi già venduti</label>
+            </div>
+        </section>
+
+        <!-- Griglia Prodotti -->
+        <section id="productsGrid" class="products-grid">
+            <!-- I vestiti verranno caricati qui dal file app.js -->
+        </section>
+    </main>
+
+    <!-- Finestra Dettagli Capo (Modale) -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImg" src="" alt="Dettaglio capo">
+                </div>
+                <div class="modal-info">
+                    <span id="modalCategory" class="tag-category">Categoria</span>
+                    <h2 id="modalTitle">Nome del Capo</h2>
+                    <p id="modalPrice" class="modal-price">0 €</p>
+                    
+                    <div class="specs-box">
+                        <p><strong>Taglia:</strong> <span id="modalSize">-</span></p>
+                        <p><strong>Condizioni:</strong> <span id="modalCondition">-</span></p>
+                        <p><strong>Misure:</strong> <span id="modalMeasurements">-</span></p>
+                    </div>
+
+                    <p id="modalDescription" class="modal-desc">Descrizione...</p>
+
+                    <div class="modal-actions">
+                        <a id="modalIgBtn" href="#" target="_blank" class="btn-primary">
+                            <i class="fa-brands fa-instagram"></i> Chiedi info / Tratta su Instagram
+                        </a>
+                        <p class="helper-text">Scrivi il nome del capo in DM per ricevere foto extra o accordarci.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Vetrina personale di beni usati tra privati. Nessuna transazione automatica su questo sito.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
