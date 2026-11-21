@@ -372,3 +372,27 @@ body {
         margin-left: 0;
     }
 }
+.style-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px; /* Posizionato in alto a destra */
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 2;
+}
+
+.style-badge.novita {
+    background-color: #10b981; /* Verde moderno */
+}
+
+.style-badge.vintage {
+    background-color: #d97706; /* Colore ambra/vintage */
+}
+
+.style-badge.offerta {
+    background-color: #ef4444; /* Rosso offerta */
+}
