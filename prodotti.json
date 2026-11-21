@@ -6,8 +6,8 @@
     "size": "L",
     "price": 25,
     "condition": "Ottime (9/10)",
-    "tag": "Casual"
-    "dateAdded": "2026-11-13"
+    "tag": "Casual",
+    "dateAdded": "2026-11-13",
     "measurements": "Spalle 52cm - Lunghezza 70cm",
     "description": "Felpa in cotone pesante lavaggio vintage, vestibilità leggermente boxy. Usata pochissimo, nessun difetto.",
     "image": "img/sweatshirt_1.jpeg",
@@ -20,8 +20,8 @@
     "size": "M",
     "price": 12,
     "condition": "Ottime (9.5/10)",
-    "tag": "Modern"
-    "dateAdded": "2026-11-13"
+    "tag": "Modern",
+    "dateAdded": "2026-11-13",
     "measurements": "Torace 54cm - Lunghezza 68cm",
     "description": "T-shirt basica a collo alto in cotone spesso, non trasparente. Lavata due volte.",
     "image": "img/tshirt_1.jpg",
@@ -34,8 +34,8 @@
     "size": "M",
     "price": 20,
     "condition": "Buone condizioni (8/10)",
-    "tag": "Vintage"
-    "dateAdded": "2026-11-13"
+    "tag": "Vintage",
+    "dateAdded": "2026-11-13",
     "measurements": "Vita 41cm - Lunghezza 102cm",
     "description": "Pantaloni cargo con tasconi laterali e coulisse regolabile alle caviglie.",
     "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80",
