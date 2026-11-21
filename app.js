@@ -48,12 +48,13 @@ function renderProducts() {
 
     grid.innerHTML = "";
 
-    const filtered = allProducts.filter(item => {
+        const filtered = allProducts.filter(item => {
         const matchCat = category === "all" || item.category === category;
         const matchSize = size === "all" || item.size === size;
-        const matchStyle = style === "all" || item.style === style;
+        // Confronto sicuro per lo stile (ignora maiuscole/minuscole)
+        const matchStyle = style === "all" || (item.tag && item.tag.toLowerCase() === style.toLowerCase());
         const matchSold = !hideSold || !item.sold;
-        return matchCat && matchSize && matchSold;
+        return matchCat && matchSize && matchStyle && matchSold;
     });
 
     if (filtered.length === 0) {
