@@ -63,12 +63,37 @@ function renderProducts() {
         card.className = "product-card";
         card.onclick = () => openModal(product);
 
+        // Gestione dello stato (Venduto o Taglia)
         const badgeClass = product.sold ? "status-sold" : "status-available";
         const badgeText = product.sold ? "Venduto" : `Taglia ${product.size}`;
+
+        // --- AGGIUNTA: Logica per i badge "Novità", "Vintage", "Offerta" ---
+        let styleBadgeHTML = "";
+        if (product.dateAdded) {
+            const oggi = new Date();
+            const dataInserimento = new Date(product.dateAdded);
+            const setteGiorniInMs = 7 * 24 * 60 * 60 * 1000;
+            const eUnaNovita = (oggi - dataInserimento) < setteGiorniInMs;
+
+            if (eUnaNovita) {
+                styleBadgeHTML = `<span class="style-badge novita">Novità</span>`;
+            }
+        }
+        
+        // Se non è novità ma ha un tag specifico (es. vintage o offerta)
+        if (!styleBadgeHTML && product.tag) {
+            if (product.tag === "vintage") {
+                styleBadgeHTML = `<span class="style-badge vintage">Vintage</span>`;
+            } else if (product.tag === "offerta") {
+                styleBadgeHTML = `<span class="style-badge offerta">Offerta</span>`;
+            }
+        }
+        // -----------------------------------------------------------------
 
         card.innerHTML = `
             <div class="card-img-wrapper">
                 <span class="status-badge ${badgeClass}">${badgeText}</span>
+                ${styleBadgeHTML}
                 <img src="${product.image}" alt="${product.title}" loading="lazy">
             </div>
             <div class="card-info">
