@@ -43,6 +43,7 @@ function renderProducts() {
     const grid = document.getElementById("productsGrid");
     const category = document.getElementById("categoryFilter").value;
     const size = document.getElementById("sizeFilter").value;
+    const style = document.getElementById("styleFilter").value;
     const hideSold = document.getElementById("hideSold").checked;
 
     grid.innerHTML = "";
@@ -50,6 +51,7 @@ function renderProducts() {
     const filtered = allProducts.filter(item => {
         const matchCat = category === "all" || item.category === category;
         const matchSize = size === "all" || item.size === size;
+        const matchStyle = style === "all" || item.style === style;
         const matchSold = !hideSold || !item.sold;
         return matchCat && matchSize && matchSold;
     });
