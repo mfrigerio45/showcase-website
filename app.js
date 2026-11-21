@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listeners per i filtri
     document.getElementById("categoryFilter").addEventListener("change", renderProducts);
     document.getElementById("sizeFilter").addEventListener("change", renderProducts);
+    document.getElementById("styleFilter").addEventListener("change", renderProducts); // <-- AGGIUNTO QUI
     document.getElementById("hideSold").addEventListener("change", renderProducts);
 
     // Chiusura modale
