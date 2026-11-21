@@ -85,6 +85,7 @@ function renderProducts() {
         
         // Se non è novità ma ha un tag specifico (es. vintage o offerta)
         if (!styleBadgeHTML && product.tag) {
+            const tagLower = product.tag.toLowerCase(); // Trasforma tutto in minuscolo per sicurezza
             if (product.tag === "vintage") {
                 styleBadgeHTML = `<span class="style-badge vintage">Vintage</span>`;
             } else if (product.tag === "offerta") {
