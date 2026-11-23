@@ -134,7 +134,7 @@ function openModal(product) {
     document.getElementById("modalCategory").innerText = product.category;
     document.getElementById("modalTitle").innerText = product.title;
     
-    // Gestione prezzo anche nella modale
+    // Gestione prezzo nella modale
     const modalPriceEl = document.getElementById("modalPrice");
     if (product.originalPrice && product.originalPrice > product.price) {
         modalPriceEl.innerHTML = `
@@ -150,16 +150,35 @@ function openModal(product) {
     document.getElementById("modalMeasurements").innerText = product.measurements;
     document.getElementById("modalDescription").innerText = product.description;
 
-    const btn = document.getElementById("modalIgBtn");
+    // Gestione dei pulsanti Vinted e Instagram nella modale
+    const vintedBtn = document.getElementById("modalVintedBtn");
+    const orDivider = document.getElementById("modalOrDivider");
+    const igBtn = document.getElementById("modalIgBtn");
+
     if (product.sold) {
-        btn.style.pointerEvents = "none";
-        btn.style.backgroundColor = "#94a3b8";
-        btn.innerHTML = "Capo già venduto";
+        // Se il capo è venduto
+        vintedBtn.style.display = "none";
+        orDivider.style.display = "none";
+        igBtn.style.pointerEvents = "none";
+        igBtn.style.backgroundColor = "#94a3b8";
+        igBtn.innerHTML = "Capo già venduto";
+        igBtn.href = "#";
     } else {
-        btn.style.pointerEvents = "auto";
-        btn.style.backgroundColor = "var(--anthracite)";
-        btn.innerHTML = `<i class="fa-brands fa-instagram"></i> Chiedi info / Tratta su Instagram`;
-        btn.href = `https://www.instagram.com/${INSTAGRAM_USERNAME}/`;
+        // Se il capo è disponibile
+        igBtn.style.pointerEvents = "auto";
+        igBtn.style.backgroundColor = "var(--anthracite)";
+        igBtn.innerHTML = `<i class="fa-brands fa-instagram"></i> Chiedi info / Tratta su Instagram`;
+        igBtn.href = `https://www.instagram.com/${INSTAGRAM_USERNAME}/`;
+
+        // Se il prodotto ha un link Vinted valido, lo mostriamo, altrimenti lo nascondiamo
+        if (product.vintedUrl) {
+            vintedBtn.style.display = "block";
+            orDivider.style.display = "block";
+            vintedBtn.href = product.vintedUrl;
+        } else {
+            vintedBtn.style.display = "none";
+            orDivider.style.display = "none";
+        }
     }
 
     modal.style.display = "flex";
