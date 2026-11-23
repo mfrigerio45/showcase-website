@@ -383,6 +383,25 @@ body {
     color: var(--text-muted);
 }
 
+/* Di default (PC / Orizzontale): il testo resta sulla stessa riga */
+.footer-break {
+    display: inline;
+}
+
+.footer-break::after {
+    content: " "; /* Aggiunge lo spazio tra le frasi su PC */
+}
+
+/* Da smartphone in giù (sotto i 768px): forza il testo su due livelli */
+@media (max-width: 768px) {
+    .footer-break {
+        display: block; /* Va a capo */
+    }
+    .footer-break::after {
+        content: none; /* Rimuove lo spazio extra */
+    }
+}
+
 @media (max-width: 768px) {
     .modal-body {
         grid-template-columns: 1fr;
