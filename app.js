@@ -95,16 +95,19 @@ function renderProducts() {
         }
         // -----------------------------------------------------------------
 
+        // Se il capo è venduto, mostriamo il badge rosso in alto, altrimenti stringa vuota
+        const soldBadgeHTML = product.sold ? `<span class="status-badge status-sold">Venduto</span>` : "";
+
         card.innerHTML = `
             <div class="card-img-wrapper">
-                <span class="status-badge ${badgeClass}">${badgeText}</span>
+                ${soldBadgeHTML}
                 ${styleBadgeHTML}
                 <img src="${product.image}" alt="${product.title}" loading="lazy">
             </div>
             <div class="card-info">
                 <div class="card-meta">
                     <span>${product.category}</span>
-                    <span>${product.condition.split(" ")[0]}</span>
+                    <span>Taglia ${product.size} • ${product.condition.split(" ")[0]}</span>
                 </div>
                 <h3 class="card-title">${product.title}</h3>
                 <div class="card-price">${product.price} €</div>
