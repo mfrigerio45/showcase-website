@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Event listeners per i filtri
     document.getElementById("categoryFilter").addEventListener("change", renderProducts);
     document.getElementById("sizeFilter").addEventListener("change", renderProducts);
-    document.getElementById("styleFilter").addEventListener("change", renderProducts); // <-- AGGIUNTO QUI
+    document.getElementById("styleFilter").addEventListener("change", renderProducts);
     document.getElementById("hideSold").addEventListener("change", renderProducts);
 
     // Chiusura modale
@@ -48,10 +48,9 @@ function renderProducts() {
 
     grid.innerHTML = "";
 
-        const filtered = allProducts.filter(item => {
+    const filtered = allProducts.filter(item => {
         const matchCat = category === "all" || item.category === category;
         const matchSize = size === "all" || item.size === size;
-        // Confronto sicuro per lo stile (ignora maiuscole/minuscole)
         const matchStyle = style === "all" || (item.tag && item.tag.toLowerCase() === style.toLowerCase());
         const matchSold = !hideSold || !item.sold;
         return matchCat && matchSize && matchStyle && matchSold;
@@ -67,11 +66,7 @@ function renderProducts() {
         card.className = "product-card";
         card.onclick = () => openModal(product);
 
-        // Gestione dello stato (Venduto o Taglia)
-        const badgeClass = product.sold ? "status-sold" : "status-available";
-        const badgeText = product.sold ? "Venduto" : `Taglia ${product.size}`;
-
-        // --- AGGIUNTA: Logica per i badge "Novità", "Vintage", "Offerta" ---
+        // --- Logica per i badge "Novità", "Vintage", "Offerta" ---
         let styleBadgeHTML = "";
         if (product.dateAdded) {
             const oggi = new Date();
@@ -84,12 +79,11 @@ function renderProducts() {
             }
         }
         
-        // Se non è novità ma ha un tag specifico (es. vintage o offerta)
         if (!styleBadgeHTML && product.tag) {
-            const tagLower = product.tag.toLowerCase(); // Trasforma tutto in minuscolo per sicurezza
-            if (product.tag === "vintage") {
+            const tagLower = product.tag.toLowerCase();
+            if (tagLower === "vintage") {
                 styleBadgeHTML = `<span class="style-badge vintage">Vintage</span>`;
-            } else if (product.tag === "offerta") {
+            } else if (tagLower === "offerta") {
                 styleBadgeHTML = `<span class="style-badge offerta">Offerta</span>`;
             }
         }
