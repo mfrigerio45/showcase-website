@@ -66,36 +66,51 @@ function renderProducts() {
         card.className = "product-card";
         card.onclick = () => openModal(product);
 
-        // --- Logica per i badge "Novità", "Vintage", "Offerta" ---
-        let styleBadgeHTML = "";
+        // --- 1. Gestione automatica "Novità" (basata sulla data) ---
+        let novitaBadgeHTML = "";
         if (product.dateAdded) {
             const oggi = new Date();
             const dataInserimento = new Date(product.dateAdded);
             const setteGiorniInMs = 7 * 24 * 60 * 60 * 1000;
-            const eUnaNovita = (oggi - dataInserimento) < setteGiorniInMs;
-
-            if (eUnaNovita) {
-                styleBadgeHTML = `<span class="style-badge novita">Novità</span>`;
+            if ((oggi - dataInserimento) < setteGiorniInMs) {
+                novitaBadgeHTML = `<span class="style-badge novita">Novità</span>`;
             }
         }
         
-        if (!styleBadgeHTML && product.tag) {
+        // --- 2. Gestione "Offerta" o "Vintage" (tramite tag) ---
+        let styleOrTagBadgeHTML = "";
+        if (product.tag) {
             const tagLower = product.tag.toLowerCase();
             if (tagLower === "vintage") {
-                styleBadgeHTML = `<span class="style-badge vintage">Vintage</span>`;
+                styleOrTagBadgeHTML = `<span class="style-badge vintage">Vintage</span>`;
             } else if (tagLower === "offerta") {
-                styleBadgeHTML = `<span class="style-badge offerta">Offerta</span>`;
+                styleOrTagBadgeHTML = `<span class="style-badge offerta">Offerta</span>`;
             }
         }
-        // -----------------------------------------------------------------
 
-        // Se il capo è venduto, mostriamo il badge rosso in alto, altrimenti stringa vuota
+        // Se il capo è venduto, badge rosso a sinistra, altrimenti vuoto
         const soldBadgeHTML = product.sold ? `<span class="status-badge status-sold">Venduto</span>` : "";
+
+        // --- 3. Gestione del prezzo (normale o scontato con originale barrato) ---
+        let priceHTML = "";
+        if (product.originalPrice && product.originalPrice > product.price) {
+            priceHTML = `
+                <div class="card-price offer-price">
+                    <span class="original-price">${product.originalPrice} €</span>
+                    <span class="current-price">${product.price} €</span>
+                </div>
+            `;
+        } else {
+            priceHTML = `<div class="card-price">${product.price} €</div>`;
+        }
 
         card.innerHTML = `
             <div class="card-img-wrapper">
                 ${soldBadgeHTML}
-                ${styleBadgeHTML}
+                <div class="badges-right-wrapper">
+                    ${novitaBadgeHTML}
+                    ${styleOrTagBadgeHTML}
+                </div>
                 <img src="${product.image}" alt="${product.title}" loading="lazy">
             </div>
             <div class="card-info">
@@ -104,7 +119,7 @@ function renderProducts() {
                     <span>Taglia ${product.size} • ${product.condition.split(" ")[0]}</span>
                 </div>
                 <h3 class="card-title">${product.title}</h3>
-                <div class="card-price">${product.price} €</div>
+                ${priceHTML}
             </div>
         `;
 
@@ -118,7 +133,18 @@ function openModal(product) {
     document.getElementById("modalImg").src = product.image;
     document.getElementById("modalCategory").innerText = product.category;
     document.getElementById("modalTitle").innerText = product.title;
-    document.getElementById("modalPrice").innerText = `${product.price} €`;
+    
+    // Gestione prezzo anche nella modale
+    const modalPriceEl = document.getElementById("modalPrice");
+    if (product.originalPrice && product.originalPrice > product.price) {
+        modalPriceEl.innerHTML = `
+            <span class="original-price" style="font-size: 1rem; margin-right: 10px;">${product.originalPrice} €</span>
+            <span class="current-price" style="color: var(--sold-red);">${product.price} €</span>
+        `;
+    } else {
+        modalPriceEl.innerText = `${product.price} €`;
+    }
+
     document.getElementById("modalSize").innerText = product.size;
     document.getElementById("modalCondition").innerText = product.condition;
     document.getElementById("modalMeasurements").innerText = product.measurements;
