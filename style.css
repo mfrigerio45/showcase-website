@@ -504,3 +504,15 @@ body {
     color: var(--text-muted);
     text-transform: lowercase;
 }
+
+/* Stile uniforme per le righe dei dettagli nella modale */
+.modal-info-scroll p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: var(--text-color, #333);
+}
+
+.modal-info-scroll strong {
+    font-weight: 600;
+}
