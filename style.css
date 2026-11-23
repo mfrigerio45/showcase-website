@@ -516,3 +516,31 @@ body {
 .modal-info-scroll strong {
     font-weight: 600;
 }
+
+/* Stile e colore della mini-box dettagli nella modale */
+.modal-info-scroll {
+    background-color: #f8fafc; /* Grigio chiaro pulito */
+    border: 1px solid #e2e8f0; /* Bordo sottile ed elegante */
+    border-radius: 8px;        /* Angoli arrotondati */
+    padding: 14px;             /* Spaziatura interna comoda */
+    max-height: 150px;         /* Altezza massima prima dello scroll */
+    overflow-y: auto;          /* Attiva lo scorrimento se il testo è lungo */
+    margin-bottom: 15px;
+}
+
+/* Stile uniforme per le righe all'interno della mini-box */
+.modal-info-scroll p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: #334155;
+}
+
+.modal-info-scroll p:last-child {
+    margin-bottom: 0;
+}
+
+.modal-info-scroll strong {
+    font-weight: 600;
+    color: #1e293b;
+}
