@@ -12,7 +12,8 @@
     "measurements": "Spalle 52cm - Lunghezza 70cm",
     "description": "Felpa in cotone pesante lavaggio vintage, vestibilità leggermente boxy. Usata pochissimo, nessun difetto.",
     "image": "img/sweatshirt_1.jpeg",
-    "sold": false
+    "sold": false,
+    "vintedUrl": null
   },
   {
     "id": 2,
@@ -27,7 +28,8 @@
     "measurements": "Torace 54cm - Lunghezza 68cm",
     "description": "T-shirt basica a collo alto in cotone spesso, non trasparente. Lavata due volte.",
     "image": "img/tshirt_1.jpg",
-    "sold": false
+    "sold": false,
+    "vintedUrl": null
   },
   {
     "id": 3,
@@ -42,7 +44,8 @@
     "measurements": "Vita 41cm - Lunghezza 102cm",
     "description": "Pantaloni cargo con tasconi laterali e coulisse regolabile alle caviglie.",
     "image": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80",
-    "sold": true
+    "sold": true,
+    "vintedUrl": null
   },
   {
     "id": 4,
@@ -57,6 +60,7 @@
     "measurements": "Torace 58cm - Lunghezza 72 cm",
     "description": "Maglia gara fantacalcio AC Brenna 2026/27 in materiale tecnico leggero e facilmente lavabile",
     "image": "img/home_kit_ACB-26_27.png",
-    "sold": false
+    "sold": false,
+    "vintedUrl": null
   }
 ]
