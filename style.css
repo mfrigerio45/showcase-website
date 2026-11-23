@@ -434,3 +434,34 @@ body {
     font-weight: 700;
     color: var(--sold-red); /* Evidenzia il prezzo scontato */
 }
+
+.modal-details-scrollbox {
+    max-height: 120px;
+    overflow-y: auto;
+    padding-right: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.btn-vinted {
+    background-color: #09b1ba; /* Il tipico verde/azzurrino di Vinted */
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+.btn-vinted:hover {
+    opacity: 0.9;
+}
+.or-divider {
+    text-align: center;
+    margin: 8px 0;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: lowercase;
+}
