@@ -413,3 +413,24 @@ body {
         margin-left: 0;
     }
 }
+
+/* Stile per i prezzi in offerta */
+.card-price.offer-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.original-price {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    font-weight: 500;
+}
+
+.current-price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--sold-red); /* Evidenzia il prezzo scontato */
+}
