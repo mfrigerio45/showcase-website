@@ -186,6 +186,7 @@ body {
     object-fit: cover;
 }
 
+/* Badge di stato (es. VENDUTO in alto a sinistra) */
 .status-badge {
     position: absolute;
     top: 12px;
@@ -195,17 +196,38 @@ body {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-}
-
-.status-available {
-    background-color: #ffffff;
-    color: var(--anthracite);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 2;
 }
 
 .status-sold {
     background-color: var(--sold-red);
     color: #ffffff;
+}
+
+/* Badge di stile in alto a destra (Novità, Vintage, Offerta) */
+.style-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 2;
+}
+
+.style-badge.novita {
+    background-color: #10b981; /* Verde moderno */
+}
+
+.style-badge.vintage {
+    background-color: #d97706; /* Ambra */
+}
+
+.style-badge.offerta {
+    background-color: #ef4444; /* Rosso offerta */
 }
 
 .card-info {
@@ -371,28 +393,4 @@ body {
     .checkbox-group {
         margin-left: 0;
     }
-}
-.style-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px; /* Posizionato in alto a destra */
-    padding: 4px 8px;
-    font-size: 11px;
-    font-weight: bold;
-    border-radius: 4px;
-    text-transform: uppercase;
-    color: #fff;
-    z-index: 2;
-}
-
-.style-badge.novita {
-    background-color: #10b981; /* Verde moderno */
-}
-
-.style-badge.vintage {
-    background-color: #d97706; /* Colore ambra/vintage */
-}
-
-.style-badge.offerta {
-    background-color: #ef4444; /* Rosso offerta */
 }
